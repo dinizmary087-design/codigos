@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>galeria com arrays</title>
+</head>
+<body>
+    <h2>minha galeria</h2>
+    <div id="galeria"></div>
+    <script>
+        let imagens = [
+            "imagem1.jpg",
+            "imag2.jpg",
+            "imagem3.jpg"
+        ];
+        let galeriaDiv = document.getElementById('galeria');
+
+            for (let i =0;i <imagens.length; i++){
+                let img = document.createElement('img')
+                img.src = imagens[i];
+                img.style.margin = '10px';
+                img.style.width = '100px';
+                galeriaDiv.appendChild(img);
+
+            }
+    </script>
+    
+</body>
+</html>
