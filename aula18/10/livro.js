@@ -1,4 +1,4 @@
-class livro{
+class Livro{
     // complete o contrutor aqui
     constructor( titulo,autor,anopublicado){
         //Inicialize as propriedade aqui
@@ -35,6 +35,8 @@ meuLivro.devolver();
 console.log("Disponivel após devolução:",meuLivro.estaDisponivel());
 
 function carregarLivrosTabela(){
+    console.log("chamou tabelaS");
+    
     const livros= [
         new Livro("capitães de Areia","Jorge Amado",1937),
         new Livro("O Alienista","Machado de Assis",1900),
@@ -43,14 +45,41 @@ function carregarLivrosTabela(){
 
         livros[3].emprestar();
         let tableLivros=
-        document.getElementById("livross-tbody");
+        document.getElementById("livros-tbody");
         for(let livro of livros){
             let row=
-            document.createElementById("tr");
+            document.createElement("tr");
             let titulo =
-
+             document.createElement("tr");
+            titulo.textContent=livro.titulo;
+            let autor= document.createElement("td");
+            autor.textContent=livro.autor;
+            let ano= document.createElement("td");
+            ano.textContent=
+            livro.anopublicado;
+            let disponivel=
+            document.createElement("td");
+            disponivel.textContent=
+            livro.estaDisponivel()?"sim":"não";
+            let tdEmprestar=
+            document.createElement("td");
+            let btnEmprestar=
+            document.createElement("button");
+            btnEmprestar.textContent= "emprestar";
+            btnEmprestar.disabled=!
+            livro.estaDisponivel();
+            btnEmprestar.addEventListener("clik",()=>{
+                livro.emprestar();
+                disponivel.textContent= "não";
+                btnEmprestar.disablend=true;
+            });
+            tdEmprestar.appendChild(btnEmprestar);
+            row.appendChild(titulo);
+             row.appendChild(autor);
+             row.appendChild(ano);
+             row.appendChild(disponivel);
+            row.appendChild(tdEmprestar);
+            tableLivros.appendChild(row)
         }
-
-        
-
-}
+    }
+    document.addEventListener("DOMContentLoaded",carregarLivrosTabela);
